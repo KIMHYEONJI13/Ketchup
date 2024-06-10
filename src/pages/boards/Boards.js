@@ -70,8 +70,12 @@ function Boards() {
         ['boardCreateDttm', '등록일']
     ];
 
-    const formattedBoardList = boardList.map(board => ({
+    const itemsPerPage = 10; 
+    const startingIndex = (currentPage - 1) * itemsPerPage + 1;
+
+    const formattedBoardList = boardList.map((board, index) => ({
         ...board,
+        boardNo: startingIndex + index,
         memberName: `${board.memberName} ${board.positionName}`,
         boardCreateDttm: FormatDateTime(board.boardCreateDttm)
     }));
@@ -126,7 +130,6 @@ function Boards() {
                     {formattedBoardList.length === 0 && (
                         <>
                             <BootstrapTable data={formattedBoardList} columns={columns} onRowClick={handleRowClick} />
-                            {/* <p style={{ textAlign: 'center' }}>{searchKeyword} 게시물이 없습니다.</p> */}
                             <Box height={'480px'} display="flex" flexDirection="column" justifyContent="center" alignItems="center" margin={'auto'}>
                                 <Typography fontSize={24} textAlign={'center'}>{searchKeyword} 게시물이 없습니다.</Typography>
                                 <img src="/img/searchConditionRequired.png" alt="searchConditionRequired" style={{ display: "block", margin: "0 auto", maxWidth: "100%", height: "auto" }} />
@@ -137,7 +140,7 @@ function Boards() {
                     {formattedBoardList.length > 0 && (
                         <BootstrapTable data={formattedBoardList} columns={columns} onRowClick={handleRowClick} />
                     )}
-                    <PaginationButtons totalItems={totalItems} itemsPerPage={10} currentPage={currentPage} onPageChange={(pageNumber) => setCurrentPage(pageNumber)} />
+                    <PaginationButtons totalItems={totalItems} itemsPerPage={itemsPerPage} currentPage={currentPage} onPageChange={(pageNumber) => setCurrentPage(pageNumber)} />
                 </div>
             </div>
         </main>
