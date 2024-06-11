@@ -1,0 +1,43 @@
+### 자원 예약 목록 조회
+GET http://localhost:8080/reserves?category=회의실&date=2024-05-08
+Authorization: Bearer eyJkYXRlIjoxNzE2MTY3NjM4NDk1LCJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJwb3NpdGlvbk5hbWUiOiLtjIDsnqUiLCJkZXBObyI6MiwiaW1nVXJsIjoiYzExNDc3MzJkNmMxNDk2OThmOGI0ZGM2NjVmMzlmZTcucG5nIiwibWVtYmVyTm8iOiIyIiwicG9zaXRpb25MZXZlbCI6Miwic3ViIjoia2V0Y2h1cCB0b2tlbiA6IDIiLCJyb2xlIjoiTFYyIiwicG9zaXRpb25TdGF0dXMiOiJZIiwibWVtYmVyTmFtZSI6IuuwleuLpOydgCIsInBvc2l0aW9uTm8iOjIsImV4cCI6MTcxNjI1NDAzOCwiZGVwTmFtZSI6IuyduOyCrO2MgCJ9.wd5oq59nf_ovgm9kGMN8bhTCB0_irZoLFWBNQVGHG94
+
+### 자원 예약 상세 조회
+GET http://localhost:8080/reserves/1
+Authorization: Bearer eyJkYXRlIjoxNzE2MTY3NjM4NDk1LCJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJwb3NpdGlvbk5hbWUiOiLtjIDsnqUiLCJkZXBObyI6MiwiaW1nVXJsIjoiYzExNDc3MzJkNmMxNDk2OThmOGI0ZGM2NjVmMzlmZTcucG5nIiwibWVtYmVyTm8iOiIyIiwicG9zaXRpb25MZXZlbCI6Miwic3ViIjoia2V0Y2h1cCB0b2tlbiA6IDIiLCJyb2xlIjoiTFYyIiwicG9zaXRpb25TdGF0dXMiOiJZIiwibWVtYmVyTmFtZSI6IuuwleuLpOydgCIsInBvc2l0aW9uTm8iOjIsImV4cCI6MTcxNjI1NDAzOCwiZGVwTmFtZSI6IuyduOyCrO2MgCJ9.wd5oq59nf_ovgm9kGMN8bhTCB0_irZoLFWBNQVGHG94
+
+### 자원 예약 등록
+POST http://localhost:8080/reserves
+Content-Type: application/json
+Authorization: Bearer eyJkYXRlIjoxNzE2MTY3NjM4NDk1LCJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJwb3NpdGlvbk5hbWUiOiLtjIDsnqUiLCJkZXBObyI6MiwiaW1nVXJsIjoiYzExNDc3MzJkNmMxNDk2OThmOGI0ZGM2NjVmMzlmZTcucG5nIiwibWVtYmVyTm8iOiIyIiwicG9zaXRpb25MZXZlbCI6Miwic3ViIjoia2V0Y2h1cCB0b2tlbiA6IDIiLCJyb2xlIjoiTFYyIiwicG9zaXRpb25TdGF0dXMiOiJZIiwibWVtYmVyTmFtZSI6IuuwleuLpOydgCIsInBvc2l0aW9uTm8iOjIsImV4cCI6MTcxNjI1NDAzOCwiZGVwTmFtZSI6IuyduOyCrO2MgCJ9.wd5oq59nf_ovgm9kGMN8bhTCB0_irZoLFWBNQVGHG94
+
+{
+  "rsvStartDttm": "2024-05-09T12:00",
+  "rsvEndDttm": "2024-05-09T13:00",
+  "rsvDescr": "회의실A 등록 테스트",
+  "reserver": "5",
+  "resources": {
+    "rscNo": 1
+  }
+}
+
+### 자원 예약 수정
+PUT http://localhost:8080/reserves/12
+Content-Type: application/json
+Authorization: Bearer eyJkYXRlIjoxNzE2MjEwMTk4MjUyLCJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJwb3NpdGlvbk5hbWUiOiLtjIDsnqUiLCJkZXBObyI6NSwiaW1nVXJsIjoiNzY1NWY5YzkxYjYyNDMxZjg4OTYyYmMxYjY4ZjIzZTUucG5nIiwibWVtYmVyTm8iOiI1IiwicG9zaXRpb25MZXZlbCI6Miwic3ViIjoia2V0Y2h1cCB0b2tlbiA6IDUiLCJyb2xlIjoiTFYyIiwicG9zaXRpb25TdGF0dXMiOiJZIiwibWVtYmVyTmFtZSI6Iuq5gO2YhOyngCIsInBvc2l0aW9uTm8iOjIsImV4cCI6MTcxNjI5NjU5OCwiZGVwTmFtZSI6IuuyleustO2MgCJ9.So5VhxFXFx3-rp0J0DhDo0g_7u7nrxliRtLhJI4LRl8
+
+{
+  "rsvDescr": "http에서 수정 테스트",
+  "rsvStartDttm": "2024-05-01T21:30",
+  "rsvEndDttm": "2024-05-01T22:30",
+  "resources" : {
+    "rscNo": 2
+  }
+}
+
+### 자원 예약 삭제
+DELETE http://localhost:8080/reserves/12
+Authorization: Bearer eyJkYXRlIjoxNzE2MTY3NjM4NDk1LCJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJwb3NpdGlvbk5hbWUiOiLtjIDsnqUiLCJkZXBObyI6MiwiaW1nVXJsIjoiYzExNDc3MzJkNmMxNDk2OThmOGI0ZGM2NjVmMzlmZTcucG5nIiwibWVtYmVyTm8iOiIyIiwicG9zaXRpb25MZXZlbCI6Miwic3ViIjoia2V0Y2h1cCB0b2tlbiA6IDIiLCJyb2xlIjoiTFYyIiwicG9zaXRpb25TdGF0dXMiOiJZIiwibWVtYmVyTmFtZSI6IuuwleuLpOydgCIsInBvc2l0aW9uTm8iOjIsImV4cCI6MTcxNjI1NDAzOCwiZGVwTmFtZSI6IuyduOyCrO2MgCJ9.wd5oq59nf_ovgm9kGMN8bhTCB0_irZoLFWBNQVGHG94
+
+
+

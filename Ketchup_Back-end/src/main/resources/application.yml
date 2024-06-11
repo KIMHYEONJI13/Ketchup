@@ -1,0 +1,105 @@
+## db connection info & fileupload config
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://squirrel.ohgiraffers.com:3360/ketchup
+    username: hikdt2312
+    password: hikdt2312
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 50MB
+      max-request-size: 50MB
+  web:
+    resources:
+      static-locations: classpath:/uploadfiles/
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: mail4ketchup@gmail.com
+    password: bnbybbuhvqdqkykb
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+  # jpa config
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+
+  # Jackson config
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+    date-format: yyyy-MM-dd'T'HH:mm:ss.SSSXXX
+
+## 이미지 저장할 위치와 응답할 때 이미지 주소 세팅
+image:
+  ## WebConfig에 세팅
+  add-resource-locations: classpath:/static/uploadfiles/
+  add-resource-handler: /uploadfiles/**
+
+  image-dir: ../Ketchup_front-end/public/img
+  image-url: http://localhost:8080/uploadfiles/
+
+jwt:
+  key: asdkfjlkawdsjfw390r82309rjlkasdfja213498dlk
+  time: 86400000
+
+
+# db connection info & fileupload config
+#spring:
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://localhost:3306/ketchup
+#    username: devsplan
+#    password: devsplan
+#  servlet:
+#    multipart:
+#      enabled: true
+#      max-file-size: 50MB
+#      max-request-size: 50MB
+#  web:
+#    resources:
+#      static-locations: classpath:/uploadfiles/
+#  mail:
+#    host: smtp.gmail.com
+#    port: 587
+#    username: mail4ketchup@gmail.com
+#    password: bnbybbuhvqdqkykb
+#    properties:
+#      mail:
+#        smtp:
+#          auth: true
+#          starttls:
+#            enable: true
+#
+#  # jpa config
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.MySQL8Dialect
+#        show_sql: true
+#        format_sql: true
+#
+### 이미지 저장할 위치와 응답할 때 이미지 주소 세팅
+#image:
+#  ## WebConfig에 세팅
+#  add-resource-locations: classpath:/static/uploadfiles/
+#  add-resource-handler: /uploadfiles/**
+#
+#  image-dir: ../Ketchup_front-end/public/img
+#  image-url: http://localhost:8080/uploadfiles/
+#
+#jwt:
+#  key: asdkfjlkawdsjfw390r82309rjlkasdfja213498dlk
+#  time: 86400000

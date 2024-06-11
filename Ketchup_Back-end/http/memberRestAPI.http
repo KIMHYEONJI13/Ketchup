@@ -1,0 +1,471 @@
+### 부서등록 개발팀
+POST http://localhost:8080/signupDep
+Content-Type: application/json
+Accept: */*
+
+{
+
+  "depNo":  1,
+  "depName": "개발팀",
+  "status": "Y"
+
+}
+
+### 부서등록 인사팀
+POST http://localhost:8080/signupDep
+Content-Type: application/json
+Accept: */*
+
+{
+  "depNo":  2,
+  "depName": "인사팀",
+  "status": "Y"
+
+
+}
+
+### 부서등록 기획팀
+POST http://localhost:8080/signupDep
+Content-Type: application/json
+Accept: */*
+
+{
+  "depNo":  3,
+  "depName": "기획팀",
+  "status": "Y"
+
+
+}
+
+### 부서등록 회계팀
+POST http://localhost:8080/signupDep
+Content-Type: application/json
+Accept: */*
+
+{
+  "depNo":  4,
+  "depName": "회계팀",
+  "status": "Y"
+
+
+}
+
+### 부서등록 법무팀
+POST http://localhost:8080/signupDep
+Content-Type: application/json
+Accept: */*
+
+{
+  "depNo":  5,
+  "depName": "법무팀",
+  "status": "Y"
+
+}
+
+### 직급등록 사원
+POST http://localhost:8080/signupPosition
+Content-Type: application/json
+Accept: */*
+
+{
+  "positionNo":  1,
+  "positionName": "직원",
+  "positionLevel":  1,
+  "authority": "LV1",
+  "positionStatus": "Y"
+
+}
+
+### 직급등록 팀장
+POST http://localhost:8080/signupPosition
+Content-Type: application/json
+Accept: */*
+
+{
+  "positionNo":  2,
+  "positionName": "팀장",
+  "positionLevel":  2,
+  "authority": "LV2",
+  "positionStatus": "Y"
+
+}
+
+### 직급등록 대표
+POST http://localhost:8080/signupPosition
+Content-Type: application/json
+Accept: */*
+
+{
+  "positionNo":  3,
+  "positionName": "대표",
+  "positionLevel":  3,
+  "authority": "LV3",
+  "positionStatus": "Y"
+
+}
+
+### 사원가입 이후영
+POST http://localhost:8080/signup
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+Accept: */*
+
+--WebAppBoundary
+Content-Disposition: form-data; name="memberInfo"
+Content-Type: application/json
+
+{
+  "memberNo": "1",
+  "memberName": "이후영",
+  "memberPW" : "1111",
+  "phone": "010-1111-1111",
+  "birthDate": "1111-11-11",
+  "gender": "M",
+  "address" : "서울시 강동구 암사동",
+  "privateEmail" : "gndud3158@naver.com",
+  "companyEmail" : "gndud3158@ketchup.com",
+  "department" : 1,
+  "position" : 2,
+  "account" : "국민307002",
+  "status" : "재직중",
+  "imgUrl" : "memberFilePath"
+}
+--WebAppBoundary
+Content-Disposition: form-data; name="memberImage"; filename="pikachu.png"
+
+< ./pikachu.png
+--WebAppBoundary--
+
+
+
+
+
+
+### 사원가입 박다은
+POST http://localhost:8080/signup
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+Accept: */*
+
+--WebAppBoundary
+Content-Disposition: form-data; name="memberInfo"
+Content-Type: application/json
+
+{
+  "memberNo": "2",
+  "memberName": "박다은",
+  "memberPW" : "2222",
+  "phone": "010-2222-2222",
+  "birthDate": "2222-12-22",
+  "gender": "F",
+  "address" : "지구어딘가",
+  "privateEmail" : "22222222@naver.com",
+  "companyEmail" : "22222222@ketchup.com",
+  "department" : 2,
+  "position" : 2,
+  "account" : "29345876239485",
+  "status" : "재직중",
+  "imgUrl" : "memberFilePath"
+}
+--WebAppBoundary
+Content-Disposition: form-data; name="memberImage"; filename="pikachu.png"
+
+< ./pikachu.png
+--WebAppBoundary--
+
+
+
+
+### 사원가입 이진우
+POST http://localhost:8080/signup
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+Accept: */*
+
+--WebAppBoundary
+Content-Disposition: form-data; name="memberInfo"
+Content-Type: application/json
+
+{
+ "memberNo": "3",
+  "memberName": "이진우",
+  "memberPW" : "3333",
+  "phone": "010-3333-3333",
+  "birthDate": "3333-33-33",
+  "gender": "M",
+  "address" : "지구어딘가",
+  "privateEmail" : "33333333@naver.com",
+  "companyEmail" : "33333333@ketchup.com",
+  "department" : 3,
+  "position" : 3,
+  "account" : "29345876239485",
+  "status" : "재직중",
+  "imgUrl" : "memberFilePath"
+}
+--WebAppBoundary
+Content-Disposition: form-data; name="memberImage"; filename="pikachu.png"
+
+< ./pikachu.png
+--WebAppBoundary--
+
+
+### 사원가입 최승욱
+POST http://localhost:8080/signup
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+Accept: */*
+
+--WebAppBoundary
+Content-Disposition: form-data; name="memberInfo"
+Content-Type: application/json
+
+{
+  "memberNo": "4",
+  "memberName": "최승욱",
+  "memberPW" : "4444",
+  "phone": "010-4444-4444",
+  "birthDate": "4444-44-44",
+  "gender": "M",
+  "address" : "지구어딘가",
+  "privateEmail" : "44444444@naver.com",
+  "companyEmail" : "44444444@ketchup.com",
+  "department" : 4,
+  "position" : 2,
+  "account" : "29345876239485",
+  "status" : "재직중",
+  "imgUrl" : "memberFilePath"
+}
+--WebAppBoundary
+Content-Disposition: form-data; name="memberImage"; filename="pikachu.png"
+
+< ./pikachu.png
+--WebAppBoundary--
+
+
+
+### 사원가입 김현지
+POST http://localhost:8080/signup
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="memberInfo"
+Content-Type: application/json
+
+{
+  "memberNo": "5",
+  "memberName": "김현지",
+  "memberPW" : "5555",
+  "phone": "010-5555-5555",
+  "birthDate": "5555-55-55",
+  "gender": "F",
+  "address" : "지구어딘가",
+  "privateEmail" : "555555555@naver.com",
+  "companyEmail" : "55555555@ketchup.com",
+  "department" : 5,
+  "position" : 2,
+  "account" : "29345876239485",
+  "status" : "재직중",
+  "imgUrl" : "memberFilePath"
+}
+--WebAppBoundary
+Content-Disposition: form-data; name="memberImage"; filename="pikachu.png"
+
+< ./pikachu.png
+--WebAppBoundary--
+
+
+### 사원가입 퇴사예정자
+POST http://localhost:8080/signup
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+Accept: */*
+
+--WebAppBoundary
+Content-Disposition: form-data; name="memberInfo"
+Content-Type: application/json
+
+{
+  "memberNo": "6",
+
+  "memberPW" : "6666",
+  "phone": "010-6666-6666",
+  "birthDate": "6666-66-66",
+  "gender": "F",
+  "address" : "지구어딘가",
+  "privateEmail" : "66666666@naver.com",
+  "companyEmail" : "66666666@ketchup.com",
+  "department" : 1,
+  "position" : 1,
+  "account" : "29345876239485",
+  "status" : "재직중",
+  "imgUrl" : "memberFilePath"
+}
+
+--WebAppBoundary
+Content-Disposition: form-data; name="memberImage"; filename="pikachu.png"
+
+< ./pikachu.png
+--WebAppBoundary--
+
+
+### 로그인
+POST http://localhost:8080/login
+Content-Type: application/json
+Accept: */*
+
+{
+  "memberNo": "5",
+  "memberPW": "1234qwer!"
+}
+
+### GET 요청
+GET http://localhost:8080/test
+Content-Type: application/json
+Authorization: Bearer eyJkYXRlIjoxNzE0NjQ0NzIwNjI1LCJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJwb3NpdGlvbk5hbWUiOiLsp4Hsm5AiLCJkZXBObyI6MSwibWVtYmVyTm8iOiIxIiwicG9zaXRpb25MZXZlbCI6MSwic3ViIjoia2V0Y2h1cCB0b2tlbiA6IDEiLCJyb2xlIjoiTFYxIiwicG9zaXRpb25TdGF0dXMiOiJZIiwicG9zaXRpb25ObyI6MSwiZXhwIjoxNzE0NzMxMTIwfQ.3-6nZLG5Cuk20PBASgjfD3dVhvslnM0JSITjG82hjhQ
+
+
+### POST 요청
+POST http://localhost:8080/test2
+Content-Type: application/json
+Authorization: Bearer eyJkYXRlIjoxNzE0NjIyMTI5MDIzLCJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJwb3NpdGlvbk5hbWUiOiLsp4Hsm5AiLCJkZXBObyI6MSwibWVtYmVyTm8iOiIxIiwicG9zaXRpb25MZXZlbCI6MSwic3ViIjoia2V0Y2h1cCB0b2tlbiA6IDEiLCJyb2xlIjoiTFYxIiwicG9zaXRpb25TdGF0dXMiOiJZIiwicG9zaXRpb25ObyI6MSwiZXhwIjoxNzE0NzA4NTI5fQ.Qc-Gt8t9NwO8Zo4Zg4Tl5n21tpGRsNuPjPAidR1emXE
+
+
+### 직급 권한 수정
+PUT http://localhost:8080/signupPosition/3
+Content-Type: application/json
+Accept: */*
+Authorization: Bearer eyJkYXRlIjoxNzE2Mzc4MjY2ODY3LCJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJwb3NpdGlvbk5hbWUiOiLtjIDsnqUiLCJkZXBObyI6NSwiaW1nVXJsIjoiY2M1Njg0YjVmMDliNGIwNjhiM2JkZTFjNmU5YTBkZjkucG5nIiwibWVtYmVyTm8iOiI1IiwicG9zaXRpb25MZXZlbCI6Miwic3ViIjoia2V0Y2h1cCB0b2tlbiA6IDUiLCJyb2xlIjoiTFYyIiwicG9zaXRpb25TdGF0dXMiOiJZIiwibWVtYmVyTmFtZSI6Iuq5gO2YhOyngCIsInBvc2l0aW9uTm8iOjIsImV4cCI6MTcxNjQ2NDY2NiwiZGVwTmFtZSI6IuuyleustO2MgCJ9.oC7HEVoQC2idksPDPUjiBBOPixfHa7WAMybCymOPen0
+
+{
+
+  "positionName": "대표",
+  "positionLevel":  3,
+  "authority": "LV3",
+  "positionStatus": "Y"
+
+}
+
+
+
+### 퇴사 처리
+PUT http://localhost:8080/auth/resign/6
+Content-Type: application/json
+Accept: */*
+Authorization: Bearer eyJkYXRlIjoxNzE0NjE4NzY2MDAxLCJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJwb3NpdGlvbk5hbWUiOiLsp4Hsm5AiLCJkZXBObyI6MSwibWVtYmVyTm8iOiI2IiwicG9zaXRpb25MZXZlbCI6MSwic3ViIjoia2V0Y2h1cCB0b2tlbiA6IDYiLCJyb2xlIjoiTFYxIiwicG9zaXRpb25TdGF0dXMiOiJZIiwicG9zaXRpb25ObyI6MSwiZXhwIjoxNzE0NzA1MTY2fQ.glhDL8cpNeqTvJ4BZSCBe3h7LEmFwXHUMC7y4IsQ3Ug
+
+{
+  "status": "퇴사"
+}
+
+###사원 상세 조회
+GET http://localhost:8080/members/3
+Content-Type: application/json
+Accept: */*
+Authorization: Bearer eyJkYXRlIjoxNzE1MjMzMDYxMDUzLCJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJwb3NpdGlvbk5hbWUiOiLrjIDtkZwiLCJkZXBObyI6MywiaW1nVXJsIjoiOGYzZmQ4MTgyMDhlNDRmNmFiZDdiNzExNmY5Zjc5ZTEucG5nIiwibWVtYmVyTm8iOiIzIiwicG9zaXRpb25MZXZlbCI6Mywic3ViIjoia2V0Y2h1cCB0b2tlbiA6IDMiLCJyb2xlIjoiTFYzIiwicG9zaXRpb25TdGF0dXMiOiJZIiwibWVtYmVyTmFtZSI6IuydtOynhOyasCIsInBvc2l0aW9uTm8iOjMsImV4cCI6MTcxNTMxOTQ2MSwiZGVwTmFtZSI6Iuq4sO2aje2MgCJ9.zTNymkHRJ15AjOmdBxkPejBatDDRztZdmeHUlQFVoh4
+
+
+
+
+### 사원 목록 조회
+GET http://localhost:8080/members
+Content-Type: application/json
+Accept: */*
+Authorization: Bearer eyJkYXRlIjoxNzE1MzA4Mjg2NDAxLCJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJwb3NpdGlvbk5hbWUiOiLrjIDtkZwiLCJkZXBObyI6MywiaW1nVXJsIjoiNTdiMzMzYzRhZTg5NGM2ZGFhODIxODkwZWQ4OTdkNDkucG5nIiwibWVtYmVyTm8iOiIzIiwicG9zaXRpb25MZXZlbCI6Mywic3ViIjoia2V0Y2h1cCB0b2tlbiA6IDMiLCJyb2xlIjoiTFYzIiwicG9zaXRpb25TdGF0dXMiOiJZIiwibWVtYmVyTmFtZSI6IuydtOynhOyasCIsInBvc2l0aW9uTm8iOjMsImV4cCI6MTcxNTM5NDY4NiwiZGVwTmFtZSI6Iuq4sO2aje2MgCJ9.svrRx4WfANHmah4VEqrNxy6UhQe5S1Ag0TNIdNo-hJg
+
+
+### 사원 목록 조회(페이징없음)
+GET http://localhost:8080/noPageMembers
+Content-Type: application/json
+Accept: */*
+Authorization: Bearer eyJkYXRlIjoxNzE1ODIwMTgwMDgzLCJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJwb3NpdGlvbk5hbWUiOiLrjIDtkZwiLCJkZXBObyI6MywiaW1nVXJsIjoiNTdiMzMzYzRhZTg5NGM2ZGFhODIxODkwZWQ4OTdkNDkucG5nIiwibWVtYmVyTm8iOiIzIiwicG9zaXRpb25MZXZlbCI6Mywic3ViIjoia2V0Y2h1cCB0b2tlbiA6IDMiLCJyb2xlIjoiTFYzIiwicG9zaXRpb25TdGF0dXMiOiJZIiwibWVtYmVyTmFtZSI6IuydtOynhOyasCIsInBvc2l0aW9uTm8iOjMsImV4cCI6MTcxNTkwNjU4MCwiZGVwTmFtZSI6Iuq4sO2aje2MgCJ9.ONhuHb1-r2AcjEw6hJLGEGCDYDd0hF8-wPmXmwKa-ek
+
+
+
+### 부서 목록 조회(페이징없음)(사용중)
+GET http://localhost:8080/noPageDeps
+Content-Type: application/json
+Accept: */*
+Authorization: Bearer eyJkYXRlIjoxNzE1OTA5MzUwNzk3LCJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJwb3NpdGlvbk5hbWUiOiLrjIDtkZwiLCJkZXBObyI6MywiaW1nVXJsIjoiNTdiMzMzYzRhZTg5NGM2ZGFhODIxODkwZWQ4OTdkNDkucG5nIiwibWVtYmVyTm8iOiIzIiwicG9zaXRpb25MZXZlbCI6Mywic3ViIjoia2V0Y2h1cCB0b2tlbiA6IDMiLCJyb2xlIjoiTFYzIiwicG9zaXRpb25TdGF0dXMiOiJZIiwibWVtYmVyTmFtZSI6IuydtOynhOyasCIsInBvc2l0aW9uTm8iOjMsImV4cCI6MTcxNTk5NTc1MCwiZGVwTmFtZSI6Iuq4sO2aje2MgCJ9.sMA8OqqfFhQcuW2seBTutThDq6PL1egMXQUHq4oG_lI
+
+
+### 부서 목록 조회(페이징없음)(모든상태)
+GET http://localhost:8080/Deps
+Content-Type: application/json
+Accept: */*
+Authorization: Bearer eyJkYXRlIjoxNzE2ODk5MzUyNTc0LCJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJkZXBObyI6NSwicG9zaXRpb25MZXZlbCI6Miwic3ViIjoia2V0Y2h1cCB0b2tlbiA6IDUiLCJyb2xlIjoiTFYyIiwiaXNGaXJzdExvZ2luIjoiTiIsIm1lbWJlck5hbWUiOiLquYDtmITsp4AiLCJkZXBOYW1lIjoi67KV66y07YyAIiwicG9zaXRpb25OYW1lIjoi67aA7J6lIiwiaW1nVXJsIjoiMzFjNTUwMGRjZDIwNGMyZmJhNTk0ZjA5OGU1ZDdmMjMucG5nIiwibWVtYmVyTm8iOiI1IiwicG9zaXRpb25TdGF0dXMiOiJZIiwicG9zaXRpb25ObyI6MiwiZXhwIjoxNzE2OTg1NzUyfQ.eEZ9PMP9bKwyb1HIaJHuD-TLq4W5tk0KQTZN-mK7OCA
+
+
+
+### 직급 목록 조회(페이징없음)(사용중)
+GET http://localhost:8080/noPagePositions
+Content-Type: application/json
+Accept: */*
+Authorization: Bearer eyJkYXRlIjoxNzE1OTA5MzUwNzk3LCJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJwb3NpdGlvbk5hbWUiOiLrjIDtkZwiLCJkZXBObyI6MywiaW1nVXJsIjoiNTdiMzMzYzRhZTg5NGM2ZGFhODIxODkwZWQ4OTdkNDkucG5nIiwibWVtYmVyTm8iOiIzIiwicG9zaXRpb25MZXZlbCI6Mywic3ViIjoia2V0Y2h1cCB0b2tlbiA6IDMiLCJyb2xlIjoiTFYzIiwicG9zaXRpb25TdGF0dXMiOiJZIiwibWVtYmVyTmFtZSI6IuydtOynhOyasCIsInBvc2l0aW9uTm8iOjMsImV4cCI6MTcxNTk5NTc1MCwiZGVwTmFtZSI6Iuq4sO2aje2MgCJ9.sMA8OqqfFhQcuW2seBTutThDq6PL1egMXQUHq4oG_lI
+
+
+### 직급 목록 조회(페이징없음)(모든상태)
+GET http://localhost:8080/Positions
+Content-Type: application/json
+Accept: */*
+Authorization: Bearer eyJkYXRlIjoxNzE2NDI1NjgwNTgwLCJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJwb3NpdGlvbk5hbWUiOiLtjIDsnqUiLCJkZXBObyI6NSwiaW1nVXJsIjoiY2M1Njg0YjVmMDliNGIwNjhiM2JkZTFjNmU5YTBkZjkucG5nIiwibWVtYmVyTm8iOiI1IiwicG9zaXRpb25MZXZlbCI6Miwic3ViIjoia2V0Y2h1cCB0b2tlbiA6IDUiLCJyb2xlIjoiTFYyIiwicG9zaXRpb25TdGF0dXMiOiJZIiwibWVtYmVyTmFtZSI6Iuq5gO2YhOyngCIsInBvc2l0aW9uTm8iOjIsImV4cCI6MTcxNjUxMjA4MCwiZGVwTmFtZSI6IuuyleustO2MgCJ9.xVJzLrjyvkjXMsv2x0bL0aY9Cn8MjKcxeDEiUQdOoGg
+
+
+
+
+### 사원 이름 검색 조회
+GET http://localhost:8080/members?search=후영
+Content-Type: application/json
+Accept: */*
+Authorization: Bearer eyJkYXRlIjoxNzE0NzA5MTMzNDY5LCJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJwb3NpdGlvbk5hbWUiOiLtjIDsnqUiLCJkZXBObyI6NSwibWVtYmVyTm8iOiI1IiwicG9zaXRpb25MZXZlbCI6Miwic3ViIjoia2V0Y2h1cCB0b2tlbiA6IDUiLCJyb2xlIjoiTFYyIiwicG9zaXRpb25TdGF0dXMiOiJZIiwicG9zaXRpb25ObyI6MiwiZXhwIjoxNzE0Nzk1NTMzfQ.9aO1Urz4cX4Jure7E10loGTo1heEqUcih2_4xs6fWXI
+
+
+### 비밀번호 찾기 인증메일 발송
+GET http://localhost:8080/email/1
+Content-Type: application/json
+Accept: */*
+
+
+###사원정보 수정
+PUT http://localhost:8080/members
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+Accept: */*
+Authorization: Bearer eyJkYXRlIjoxNzE2MTcyOTE5OTI3LCJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJwb3NpdGlvbk5hbWUiOiLrjIDtkZwiLCJkZXBObyI6MywiaW1nVXJsIjoiMmZlZDJiYzMyZWZiNDlkYWE1OTM5NTNmZTk0YjM4ZTgucG5nIiwibWVtYmVyTm8iOiIzIiwicG9zaXRpb25MZXZlbCI6Mywic3ViIjoia2V0Y2h1cCB0b2tlbiA6IDMiLCJyb2xlIjoiTFYzIiwicG9zaXRpb25TdGF0dXMiOiJZIiwibWVtYmVyTmFtZSI6IuydtOynhOyasCIsInBvc2l0aW9uTm8iOjMsImV4cCI6MTcxNjI1OTMxOSwiZGVwTmFtZSI6Iuq4sO2aje2MgCJ9.ggEAYs2tTgTrT4q54vRgsigqsp2lkKF8IvUVqgfGprE
+
+
+--WebAppBoundary
+Content-Disposition: form-data; name="memberInfo"
+Content-Type: application/json
+
+{
+  "memberNo": "1",
+  "memberName": "수정두번한이후영",
+  "phone": "010-3228-3158",
+  "address" : "지구어딘가",
+  "privateEmail" : "66666666@naver.com",
+  "companyEmail" : "66666666@ketchup.com",
+  "department" : 2,
+  "position" : 2,
+  "account" : "29345876239485"
+}
+
+--WebAppBoundary
+Content-Disposition: form-data; name="memberImage"; filename="pikachu.png"
+
+< ./pikachu.png
+--WebAppBoundary--
+
+
+### 부서 삭제
+DELETE http://localhost:8080/deps/7
+Content-Type: application/json
+Accept: */*
+Authorization: Bearer eyJkYXRlIjoxNzE2NTEyNjI4MDA5LCJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJwb3NpdGlvbk5hbWUiOiLtjIDsnqUiLCJkZXBObyI6NSwiaW1nVXJsIjoiZWY0MzQxMzMzZWM2NDY3Yjg1NGFlZDMzNjE3Y2FkNGMucG5nIiwibWVtYmVyTm8iOiI1IiwicG9zaXRpb25MZXZlbCI6Miwic3ViIjoia2V0Y2h1cCB0b2tlbiA6IDUiLCJyb2xlIjoiTFYyIiwicG9zaXRpb25TdGF0dXMiOiJZIiwibWVtYmVyTmFtZSI6Iuq5gO2YhOyngCIsInBvc2l0aW9uTm8iOjIsImV4cCI6MTcxNjU5OTAyOCwiZGVwTmFtZSI6IuuyleustO2MgCJ9.m99GpHxu1IznDN2fYxsHo7B5xK9ajvKgNbTchk8n35U
+
+
+###부서명 수정
+PUT http://localhost:8080/Dep/3
+Content-Type: application/json
+Accept: */*
+Authorization: Bearer eyJkYXRlIjoxNzE2Mzc4MjY2ODY3LCJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJwb3NpdGlvbk5hbWUiOiLtjIDsnqUiLCJkZXBObyI6NSwiaW1nVXJsIjoiY2M1Njg0YjVmMDliNGIwNjhiM2JkZTFjNmU5YTBkZjkucG5nIiwibWVtYmVyTm8iOiI1IiwicG9zaXRpb25MZXZlbCI6Miwic3ViIjoia2V0Y2h1cCB0b2tlbiA6IDUiLCJyb2xlIjoiTFYyIiwicG9zaXRpb25TdGF0dXMiOiJZIiwibWVtYmVyTmFtZSI6Iuq5gO2YhOyngCIsInBvc2l0aW9uTm8iOjIsImV4cCI6MTcxNjQ2NDY2NiwiZGVwTmFtZSI6IuuyleustO2MgCJ9.oC7HEVoQC2idksPDPUjiBBOPixfHa7WAMybCymOPen0
+
+{
+
+"depName": "대표"
+
+
+}

@@ -1,0 +1,76 @@
+### 공지 push 전달용
+GET http://localhost:8080/notices
+Authorization: Bearer eyJkYXRlIjoxNzE1MTMwMjc4MjI4LCJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJwb3NpdGlvbk5hbWUiOiLtjIDsnqUiLCJkZXBObyI6NSwibWVtYmVyTm8iOiI1IiwicG9zaXRpb25MZXZlbCI6Miwic3ViIjoia2V0Y2h1cCB0b2tlbiA6IDUiLCJyb2xlIjoiTFYyIiwicG9zaXRpb25TdGF0dXMiOiJZIiwicG9zaXRpb25ObyI6MiwiZXhwIjoxNzE1MjE2Njc4fQ.4KtDg3lZ7bdgJWSpEY6tNkqB-cQYRcI8kwncwqYBKMc
+
+### 공지 목록 조회
+GET http://localhost:8080/notices
+Authorization: Bearer eyJkYXRlIjoxNzE1MTMwMjc4MjI4LCJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJwb3NpdGlvbk5hbWUiOiLtjIDsnqUiLCJkZXBObyI6NSwibWVtYmVyTm8iOiI1IiwicG9zaXRpb25MZXZlbCI6Miwic3ViIjoia2V0Y2h1cCB0b2tlbiA6IDUiLCJyb2xlIjoiTFYyIiwicG9zaXRpb25TdGF0dXMiOiJZIiwicG9zaXRpb25ObyI6MiwiZXhwIjoxNzE1MjE2Njc4fQ.4KtDg3lZ7bdgJWSpEY6tNkqB-cQYRcI8kwncwqYBKMc
+
+### 공지 목록 조회 / 제목 검색
+GET http://localhost:8080/notices?title=공지 제목1
+Authorization: Bearer eyJkYXRlIjoxNzE1NTY2MDgzMDA0LCJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJwb3NpdGlvbk5hbWUiOiLtjIDsnqUiLCJkZXBObyI6NSwiaW1nVXJsIjoiY2M1Njg0YjVmMDliNGIwNjhiM2JkZTFjNmU5YTBkZjkucG5nIiwibWVtYmVyTm8iOiI1IiwicG9zaXRpb25MZXZlbCI6Miwic3ViIjoia2V0Y2h1cCB0b2tlbiA6IDUiLCJyb2xlIjoiTFYyIiwicG9zaXRpb25TdGF0dXMiOiJZIiwibWVtYmVyTmFtZSI6Iuq5gO2YhOyngCIsInBvc2l0aW9uTm8iOjIsImV4cCI6MTcxNTY1MjQ4MywiZGVwTmFtZSI6IuuyleustO2MgCJ9.KkMY6HPA8Uz9jeCzwbGlG86Zx2tVYSKWzIqlpKU3mWU
+
+### 공지 상세 조회
+GET http://localhost:8080/notices/8
+Authorization: Bearer eyJkYXRlIjoxNzE1NTY2MDgzMDA0LCJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJwb3NpdGlvbk5hbWUiOiLtjIDsnqUiLCJkZXBObyI6NSwiaW1nVXJsIjoiY2M1Njg0YjVmMDliNGIwNjhiM2JkZTFjNmU5YTBkZjkucG5nIiwibWVtYmVyTm8iOiI1IiwicG9zaXRpb25MZXZlbCI6Miwic3ViIjoia2V0Y2h1cCB0b2tlbiA6IDUiLCJyb2xlIjoiTFYyIiwicG9zaXRpb25TdGF0dXMiOiJZIiwibWVtYmVyTmFtZSI6Iuq5gO2YhOyngCIsInBvc2l0aW9uTm8iOjIsImV4cCI6MTcxNTY1MjQ4MywiZGVwTmFtZSI6IuuyleustO2MgCJ9.KkMY6HPA8Uz9jeCzwbGlG86Zx2tVYSKWzIqlpKU3mWU
+
+### 공지 등록
+POST http://localhost:8080/notices
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+Authorization: Bearer eyJkYXRlIjoxNzE1NTY2MDgzMDA0LCJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJwb3NpdGlvbk5hbWUiOiLtjIDsnqUiLCJkZXBObyI6NSwiaW1nVXJsIjoiY2M1Njg0YjVmMDliNGIwNjhiM2JkZTFjNmU5YTBkZjkucG5nIiwibWVtYmVyTm8iOiI1IiwicG9zaXRpb25MZXZlbCI6Miwic3ViIjoia2V0Y2h1cCB0b2tlbiA6IDUiLCJyb2xlIjoiTFYyIiwicG9zaXRpb25TdGF0dXMiOiJZIiwibWVtYmVyTmFtZSI6Iuq5gO2YhOyngCIsInBvc2l0aW9uTm8iOjIsImV4cCI6MTcxNTY1MjQ4MywiZGVwTmFtZSI6IuuyleustO2MgCJ9.KkMY6HPA8Uz9jeCzwbGlG86Zx2tVYSKWzIqlpKU3mWU
+
+--WebAppBoundary
+Content-Disposition: form-data; name="noticeDTO"
+Content-Type: application/json
+
+{
+  "noticeTitle": "공지 등록 테스트",
+  "noticeContent": "공지 내용1",
+    "noticeFix": "Y"
+}
+--WebAppBoundary--
+
+### 공지 등록(첨부파일)
+POST http://localhost:8080/notices
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+Authorization: Bearer eyJkYXRlIjoxNzE1NTk3MjYwNjA2LCJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJwb3NpdGlvbk5hbWUiOiLtjIDsnqUiLCJkZXBObyI6NSwiaW1nVXJsIjoiY2M1Njg0YjVmMDliNGIwNjhiM2JkZTFjNmU5YTBkZjkucG5nIiwibWVtYmVyTm8iOiI1IiwicG9zaXRpb25MZXZlbCI6Miwic3ViIjoia2V0Y2h1cCB0b2tlbiA6IDUiLCJyb2xlIjoiTFYyIiwicG9zaXRpb25TdGF0dXMiOiJZIiwibWVtYmVyTmFtZSI6Iuq5gO2YhOyngCIsInBvc2l0aW9uTm8iOjIsImV4cCI6MTcxNTY4MzY2MCwiZGVwTmFtZSI6IuuyleustO2MgCJ9.VK0UI6BdjGfnQ5WHPXfCd1t2KQ2qhP40G4x07pWmlsA
+
+--WebAppBoundary
+Content-Disposition: form-data; name="files"; filename="pikachu.png"
+Authorization: Bearer eyJkYXRlIjoxNzE1NTk3MjYwNjA2LCJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJwb3NpdGlvbk5hbWUiOiLtjIDsnqUiLCJkZXBObyI6NSwiaW1nVXJsIjoiY2M1Njg0YjVmMDliNGIwNjhiM2JkZTFjNmU5YTBkZjkucG5nIiwibWVtYmVyTm8iOiI1IiwicG9zaXRpb25MZXZlbCI6Miwic3ViIjoia2V0Y2h1cCB0b2tlbiA6IDUiLCJyb2xlIjoiTFYyIiwicG9zaXRpb25TdGF0dXMiOiJZIiwibWVtYmVyTmFtZSI6Iuq5gO2YhOyngCIsInBvc2l0aW9uTm8iOjIsImV4cCI6MTcxNTY4MzY2MCwiZGVwTmFtZSI6IuuyleustO2MgCJ9.VK0UI6BdjGfnQ5WHPXfCd1t2KQ2qhP40G4x07pWmlsA
+
+--WebAppBoundary
+Content-Disposition: form-data; name="noticeDTO"
+Content-Type: application/json
+
+{
+  "noticeTitle": "공지 제목1",
+  "noticeContent": "공지 내용1",
+  "noticeFix": "N"
+}
+
+
+### 공지 수정
+PUT http://localhost:8080/notices/12
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+Authorization: Bearer eyJkYXRlIjoxNzE1MTMwMjc4MjI4LCJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJwb3NpdGlvbk5hbWUiOiLtjIDsnqUiLCJkZXBObyI6NSwibWVtYmVyTm8iOiI1IiwicG9zaXRpb25MZXZlbCI6Miwic3ViIjoia2V0Y2h1cCB0b2tlbiA6IDUiLCJyb2xlIjoiTFYyIiwicG9zaXRpb25TdGF0dXMiOiJZIiwicG9zaXRpb25ObyI6MiwiZXhwIjoxNzE1MjE2Njc4fQ.4KtDg3lZ7bdgJWSpEY6tNkqB-cQYRcI8kwncwqYBKMc
+
+--WebAppBoundary
+Content-Disposition: form-data; name="noticeDTO"
+#Content-Type: application/json
+
+{
+  "noticeTitle": "공지 제목 수정수정",
+  "noticeContent": "공지 내용 수정수정",
+  "noticeFix": "Y"
+}
+--WebAppBoundary
+Content-Disposition: form-data; name="files"; filename="pikachu.png"
+
+< ./pikachu.png
+--WebAppBoundary--
+
+### 공지 삭제
+DELETE http://localhost:8080/notices/2
+Authorization: Bearer eyJkYXRlIjoxNzE1MTMwMjc4MjI4LCJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJwb3NpdGlvbk5hbWUiOiLtjIDsnqUiLCJkZXBObyI6NSwibWVtYmVyTm8iOiI1IiwicG9zaXRpb25MZXZlbCI6Miwic3ViIjoia2V0Y2h1cCB0b2tlbiA6IDUiLCJyb2xlIjoiTFYyIiwicG9zaXRpb25TdGF0dXMiOiJZIiwicG9zaXRpb25ObyI6MiwiZXhwIjoxNzE1MjE2Njc4fQ.4KtDg3lZ7bdgJWSpEY6tNkqB-cQYRcI8kwncwqYBKMc
+

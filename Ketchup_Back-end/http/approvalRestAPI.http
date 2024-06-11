@@ -1,0 +1,73 @@
+-- form 추가 필요
+### 기안 상신
+POST http://localhost:8080/approvals
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+Accept: */*
+Authorization: Bearer eyJkYXRlIjoxNzE1NjQ2NzMxNzYwLCJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJwb3NpdGlvbk5hbWUiOiLtjIDsnqUiLCJkZXBObyI6NCwiaW1nVXJsIjoiZWVhYTZkYzljZTc4NDAwMGE2NWQ5MmUyMDY0OWU3ZmEucG5nIiwibWVtYmVyTm8iOiI0IiwicG9zaXRpb25MZXZlbCI6Miwic3ViIjoia2V0Y2h1cCB0b2tlbiA6IDQiLCJyb2xlIjoiTFYyIiwicG9zaXRpb25TdGF0dXMiOiJZIiwibWVtYmVyTmFtZSI6Iuy1nOyKueyasSIsInBvc2l0aW9uTm8iOjIsImV4cCI6MTcxNTczMzEzMSwiZGVwTmFtZSI6Iu2ajOqzhO2MgCJ9.Ie-96zewqEdOeW63K985B2NFjyNjB-T9D04WoRmLhKs
+
+--WebAppBoundary
+Content-Disposition: form-data; name="approval.appMemberNo"
+
+4
+--WebAppBoundary
+Content-Disposition: form-data; name="approval.formNo"
+
+1
+--WebAppBoundary
+Content-Disposition: form-data; name="approval.appTitle"
+
+파일테스트2
+--WebAppBoundary
+Content-Disposition: form-data; name="approval.appContents"
+
+내용
+--WebAppBoundary
+Content-Disposition: form-data; name="appLineDTOList[0].alMemberNo"
+
+2
+--WebAppBoundary
+Content-Disposition: form-data; name="appLineDTOList[0].alType"
+
+일반
+--WebAppBoundary
+Content-Disposition: form-data; name="appLineDTOList[0].alSequence"
+
+1
+--WebAppBoundary
+Content-Disposition: form-data; name="refLineDTOList[0].refMemberNo"
+
+3
+--WebAppBoundary
+Content-Disposition: form-data; name="multipartFileList"; filename="duck.webp"
+
+< ./duck.webp
+--WebAppBoundary--
+
+### 기안 목록 조회
+GET http://localhost:8080/approvals?memberNo=4&category=1&status=전체&page=1
+Content-Type: application/json
+Accept: */*
+Authorization: Bearer eyJkYXRlIjoxNzE1NjQ2NzMxNzYwLCJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJwb3NpdGlvbk5hbWUiOiLtjIDsnqUiLCJkZXBObyI6NCwiaW1nVXJsIjoiZWVhYTZkYzljZTc4NDAwMGE2NWQ5MmUyMDY0OWU3ZmEucG5nIiwibWVtYmVyTm8iOiI0IiwicG9zaXRpb25MZXZlbCI6Miwic3ViIjoia2V0Y2h1cCB0b2tlbiA6IDQiLCJyb2xlIjoiTFYyIiwicG9zaXRpb25TdGF0dXMiOiJZIiwibWVtYmVyTmFtZSI6Iuy1nOyKueyasSIsInBvc2l0aW9uTm8iOjIsImV4cCI6MTcxNTczMzEzMSwiZGVwTmFtZSI6Iu2ajOqzhO2MgCJ9.Ie-96zewqEdOeW63K985B2NFjyNjB-T9D04WoRmLhKs
+
+### 기안 상세 조회
+GET http://localhost:8080/approvals/1
+Content-Type: application/json
+Accept: */*
+Authorization: Bearer eyJkYXRlIjoxNzE0NzAxMjQyNDQ1LCJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJwb3NpdGlvbk5hbWUiOiLtjIDsnqUiLCJkZXBObyI6NCwibWVtYmVyTm8iOiI0IiwicG9zaXRpb25MZXZlbCI6Miwic3ViIjoia2V0Y2h1cCB0b2tlbiA6IDQiLCJyb2xlIjoiTFYyIiwicG9zaXRpb25TdGF0dXMiOiJZIiwicG9zaXRpb25ObyI6MiwiZXhwIjoxNzE0Nzg3NjQyfQ.mDYxJLyS20oCVSdmKNMqrlJYoEYs0iQq2NIvpfr2nC8
+
+### 양식 조회
+GET http://localhost:8080/forms/1
+Content-Type: application/json
+Accept: */*
+Authorization: Bearer eyJkYXRlIjoxNzE0NzAxMjQyNDQ1LCJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJwb3NpdGlvbk5hbWUiOiLtjIDsnqUiLCJkZXBObyI6NCwibWVtYmVyTm8iOiI0IiwicG9zaXRpb25MZXZlbCI6Miwic3ViIjoia2V0Y2h1cCB0b2tlbiA6IDQiLCJyb2xlIjoiTFYyIiwicG9zaXRpb25TdGF0dXMiOiJZIiwicG9zaXRpb25ObyI6MiwiZXhwIjoxNzE0Nzg3NjQyfQ.mDYxJLyS20oCVSdmKNMqrlJYoEYs0iQq2NIvpfr2nC8
+
+### 기안 상태 수정
+PUT http://localhost:8080/approvals/1
+Content-Type: application/json
+Accept: */*
+Authorization: Bearer eyJkYXRlIjoxNzE0NzAxMjQyNDQ1LCJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJwb3NpdGlvbk5hbWUiOiLtjIDsnqUiLCJkZXBObyI6NCwibWVtYmVyTm8iOiI0IiwicG9zaXRpb25MZXZlbCI6Miwic3ViIjoia2V0Y2h1cCB0b2tlbiA6IDQiLCJyb2xlIjoiTFYyIiwicG9zaXRpb25TdGF0dXMiOiJZIiwicG9zaXRpb25ObyI6MiwiZXhwIjoxNzE0Nzg3NjQyfQ.mDYxJLyS20oCVSdmKNMqrlJYoEYs0iQq2NIvpfr2nC8
+
+{
+  "action": "회수",
+  "refusal": ""
+}

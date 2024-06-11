@@ -1,0 +1,74 @@
+### 전체 목록조회
+GET http://localhost:8080/boards
+Authorization: Bearer eyJkYXRlIjoxNzE1OTI0MDY4MTcxLCJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJwb3NpdGlvbk5hbWUiOiLtjIDsnqUiLCJkZXBObyI6NSwiaW1nVXJsIjoiY2M1Njg0YjVmMDliNGIwNjhiM2JkZTFjNmU5YTBkZjkucG5nIiwibWVtYmVyTm8iOiI1IiwicG9zaXRpb25MZXZlbCI6Miwic3ViIjoia2V0Y2h1cCB0b2tlbiA6IDUiLCJyb2xlIjoiTFYyIiwicG9zaXRpb25TdGF0dXMiOiJZIiwibWVtYmVyTmFtZSI6Iuq5gO2YhOyngCIsInBvc2l0aW9uTm8iOjIsImV4cCI6MTcxNjAxMDQ2OCwiZGVwTmFtZSI6IuuyleustO2MgCJ9.VNnfsGc96E6dU_a4Qh12KQDHjGHLp8mdQrnS8Fv12Hk
+
+### 전체 목록조회 / 제목 검색
+GET http://localhost:8080/boards?departmentNo=5
+Authorization: Bearer eyJkYXRlIjoxNzE1OTI0MDY4MTcxLCJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJwb3NpdGlvbk5hbWUiOiLtjIDsnqUiLCJkZXBObyI6NSwiaW1nVXJsIjoiY2M1Njg0YjVmMDliNGIwNjhiM2JkZTFjNmU5YTBkZjkucG5nIiwibWVtYmVyTm8iOiI1IiwicG9zaXRpb25MZXZlbCI6Miwic3ViIjoia2V0Y2h1cCB0b2tlbiA6IDUiLCJyb2xlIjoiTFYyIiwicG9zaXRpb25TdGF0dXMiOiJZIiwibWVtYmVyTmFtZSI6Iuq5gO2YhOyngCIsInBvc2l0aW9uTm8iOjIsImV4cCI6MTcxNjAxMDQ2OCwiZGVwTmFtZSI6IuuyleustO2MgCJ9.VNnfsGc96E6dU_a4Qh12KQDHjGHLp8mdQrnS8Fv12Hk
+
+### 상세 조회
+GET http://localhost:8080/boards/12
+Authorization: Bearer eyJkYXRlIjoxNzE1Nzc3MjA4ODYzLCJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJwb3NpdGlvbk5hbWUiOiLrjIDtkZwiLCJkZXBObyI6MywiaW1nVXJsIjoiNTdiMzMzYzRhZTg5NGM2ZGFhODIxODkwZWQ4OTdkNDkucG5nIiwibWVtYmVyTm8iOiIzIiwicG9zaXRpb25MZXZlbCI6Mywic3ViIjoia2V0Y2h1cCB0b2tlbiA6IDMiLCJyb2xlIjoiTFYzIiwicG9zaXRpb25TdGF0dXMiOiJZIiwibWVtYmVyTmFtZSI6IuydtOynhOyasCIsInBvc2l0aW9uTm8iOjMsImV4cCI6MTcxNTg2MzYwOCwiZGVwTmFtZSI6Iuq4sO2aje2MgCJ9.A-dQLFT-R1Luzg7PAu0hRBSNa57FZXKppLbnS1A1QdQ
+
+### 게시글 등록
+POST http://localhost:8080/boards
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+Authorization: Bearer eyJkYXRlIjoxNzE1OTI0MDY4MTcxLCJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJwb3NpdGlvbk5hbWUiOiLtjIDsnqUiLCJkZXBObyI6NSwiaW1nVXJsIjoiY2M1Njg0YjVmMDliNGIwNjhiM2JkZTFjNmU5YTBkZjkucG5nIiwibWVtYmVyTm8iOiI1IiwicG9zaXRpb25MZXZlbCI6Miwic3ViIjoia2V0Y2h1cCB0b2tlbiA6IDUiLCJyb2xlIjoiTFYyIiwicG9zaXRpb25TdGF0dXMiOiJZIiwibWVtYmVyTmFtZSI6Iuq5gO2YhOyngCIsInBvc2l0aW9uTm8iOjIsImV4cCI6MTcxNjAxMDQ2OCwiZGVwTmFtZSI6IuuyleustO2MgCJ9.VNnfsGc96E6dU_a4Qh12KQDHjGHLp8mdQrnS8Fv12Hk
+
+--WebAppBoundary
+Content-Disposition: form-data; name="boardDTO"
+Content-Type: application/json
+
+{
+  "departmentNo": 5,
+  "boardTitle": "게시물 등록12",
+  "boardContent": "게시물 내용 등록12"
+}
+
+--WebAppBoundary--
+
+### 게시글 등록(첨부파일)
+POST http://localhost:8080/boards
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+Authorization: Bearer eyJkYXRlIjoxNzE1OTI0MDY4MTcxLCJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJwb3NpdGlvbk5hbWUiOiLtjIDsnqUiLCJkZXBObyI6NSwiaW1nVXJsIjoiY2M1Njg0YjVmMDliNGIwNjhiM2JkZTFjNmU5YTBkZjkucG5nIiwibWVtYmVyTm8iOiI1IiwicG9zaXRpb25MZXZlbCI6Miwic3ViIjoia2V0Y2h1cCB0b2tlbiA6IDUiLCJyb2xlIjoiTFYyIiwicG9zaXRpb25TdGF0dXMiOiJZIiwibWVtYmVyTmFtZSI6Iuq5gO2YhOyngCIsInBvc2l0aW9uTm8iOjIsImV4cCI6MTcxNjAxMDQ2OCwiZGVwTmFtZSI6IuuyleustO2MgCJ9.VNnfsGc96E6dU_a4Qh12KQDHjGHLp8mdQrnS8Fv12Hk
+
+--WebAppBoundary
+Content-Disposition: form-data; name="files"; filename="pikachu.png"
+
+--WebAppBoundary
+Content-Disposition: form-data; name="boardDTO";
+Content-Type: application/json
+
+{
+  "memberNo": 5,
+  "departmentNo": 5,
+  "boardTitle": "게시물 등록13",
+  "boardContent": "게시물 내용 등록13"
+}
+
+### 게시글 수정
+PUT http://localhost:8080/boards/30
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+Authorization: Bearer eyJkYXRlIjoxNzE1Nzc3MjA4ODYzLCJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJwb3NpdGlvbk5hbWUiOiLrjIDtkZwiLCJkZXBObyI6MywiaW1nVXJsIjoiNTdiMzMzYzRhZTg5NGM2ZGFhODIxODkwZWQ4OTdkNDkucG5nIiwibWVtYmVyTm8iOiIzIiwicG9zaXRpb25MZXZlbCI6Mywic3ViIjoia2V0Y2h1cCB0b2tlbiA6IDMiLCJyb2xlIjoiTFYzIiwicG9zaXRpb25TdGF0dXMiOiJZIiwibWVtYmVyTmFtZSI6IuydtOynhOyasCIsInBvc2l0aW9uTm8iOjMsImV4cCI6MTcxNTg2MzYwOCwiZGVwTmFtZSI6Iuq4sO2aje2MgCJ9.A-dQLFT-R1Luzg7PAu0hRBSNa57FZXKppLbnS1A1QdQ
+
+--WebAppBoundary
+Content-Disposition: form-data; name="boardDTO";
+Content-Type: application/json
+
+{
+  "departmentNo": 3,
+  "boardTitle": "게시물 수정",
+  "boardContent": "게시물 내용 수정"
+}
+--WebAppBoundary
+Content-Disposition: form-data; name="files"; filename="pikachu.png"
+
+< ./pikachu.png
+--WebAppBoundary--
+
+### 게시글 삭제
+DELETE http://localhost:8080/boards/29
+Authorization: Bearer eyJkYXRlIjoxNzE1Nzc3MjA4ODYzLCJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJwb3NpdGlvbk5hbWUiOiLrjIDtkZwiLCJkZXBObyI6MywiaW1nVXJsIjoiNTdiMzMzYzRhZTg5NGM2ZGFhODIxODkwZWQ4OTdkNDkucG5nIiwibWVtYmVyTm8iOiIzIiwicG9zaXRpb25MZXZlbCI6Mywic3ViIjoia2V0Y2h1cCB0b2tlbiA6IDMiLCJyb2xlIjoiTFYzIiwicG9zaXRpb25TdGF0dXMiOiJZIiwibWVtYmVyTmFtZSI6IuydtOynhOyasCIsInBvc2l0aW9uTm8iOjMsImV4cCI6MTcxNTg2MzYwOCwiZGVwTmFtZSI6Iuq4sO2aje2MgCJ9.A-dQLFT-R1Luzg7PAu0hRBSNa57FZXKppLbnS1A1QdQ
+
+
+
