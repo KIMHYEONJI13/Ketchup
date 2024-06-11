@@ -1,0 +1,18 @@
+.scroll-container {
+    overflow-y: hidden;
+  }
+ 
+  .scroll-container::-webkit-scrollbar {
+    height: 8px;
+  }
+  
+  .scroll-container::-webkit-scrollbar-thumb {
+    margin-top: 5px;
+    background: #888;
+    border-radius: 4px;
+  }
+  
+  .scroll-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  

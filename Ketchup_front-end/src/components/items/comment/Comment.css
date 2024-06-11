@@ -1,0 +1,31 @@
+/* Comment.css */
+
+.comment-container {
+    margin-left: 0;
+    border-top: 1px solid lightgray;
+    padding-left: 0; /* 수정된 부분 */
+    margin-bottom: 10px;
+}
+
+.comment-inner {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+.text-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.parent-member {
+    color: #EC0B0B; /* 수정된 부분 */
+}

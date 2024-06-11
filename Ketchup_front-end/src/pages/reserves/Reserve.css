@@ -1,0 +1,14 @@
+:root {
+--fc-button-bg-color: #EC090B;
+--fc-button-border-color: #EC090B;
+--fc-button-hover-bg-color: #EC090B;
+--fc-button-active-bg-color: #EC090B;
+}
+
+.fc-moreButton-button {
+    width: 75px !important;
+    height: 38px !important;
+    padding: 1px 6px !important;
+    border-radius: 5px !important;
+    color: rgb(255, 255, 255) !important;
+}

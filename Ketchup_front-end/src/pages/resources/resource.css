@@ -1,0 +1,74 @@
+/* ResourceDetailModal */
+.modal-back{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background-color: rgba(0, 0, 0, 0.5); */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+.modal-box{
+    padding:20px;
+    background-color: white;
+    width: 450px;
+    height:auto;
+    border-radius: 10px;
+}
+
+/* InsertResourceForm.js */
+.rsc-form {
+    width:100%;
+}
+.rsc-form label {
+    width:35%;
+    margin:10px 0;
+    font-weight:bold;
+}
+.rsc-form input {
+    border:none;
+    border-bottom:1px solid #000;
+}
+.input-number {
+    display:inline-block;
+    width:20%;
+}
+.rsc-radio, .rsc-form textarea {
+    display: inline-block;
+    width:65%;
+}
+.rsc-radio label {
+    margin:10px 0;
+    margin-left:25px;
+    font-weight:400;
+}
+.rsc-radio input {
+    margin-left:1px;
+    margin-top:15px;
+}
+.rsc-location {
+    display: inline-block;
+    width:65%;
+}
+.rsc-tr td:not(:last-child) {
+    padding:15px;
+    text-align:center;
+}
+
+/* RscDetailContent.js */
+.detail-title {
+    display: inline-block;
+    width:35%;
+    margin:10px 0;
+    font-weight:bold;
+}
+.detail-content {
+    display: inline-block;
+    width:65%;
+    font-weight:bold;
+    color:#555;
+}

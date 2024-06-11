@@ -1,0 +1,177 @@
+.mail-btn {
+    display: flex;
+}
+.mail-btn button {
+    border: none;
+    background-color: #ffffff;
+    align-items: center;
+}
+.focus-btn {
+    color: #EC0B0B;
+}
+.non-focus-btn {
+    color: #000000;
+}
+.m-icon {
+    width: 50px;
+    height: 50px;
+}
+
+.unreadRow {
+    font-weight: bold;
+}
+.receiver-time {
+    color:#000000;
+    text-decoration: none;
+    width:100%;
+}
+.disable-btn {
+    width: 90px; 
+    height: 38px;
+    border-radius: 5px;
+    border: none;
+    background-color: #ddd;
+    color: #000;
+}
+.mail-cursor {
+    cursor: pointer;
+}
+.mail-tr td {
+    padding:15px !important;
+    text-align:center;
+}
+/* .mail-title {
+    width:600px;
+} */
+.mail-receiver {
+    width:250px;
+}
+.ellipsis {
+    display:inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+/* SendCancelModal.js */
+.modal-back{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+.modal-box{
+    padding:20px;
+    background-color: white;
+    width: 450px;
+    height: 250px;
+    border-radius: 10px;
+}
+
+/* MailContent.js */
+.mail-title {
+    margin-bottom:5px;
+}
+.send-time {
+    color: #a1a1a1;
+    font-size:18px;
+}
+.r-color {
+    margin-top:10px;
+}
+.r-color span {
+    font-size:18px;
+}
+.r-color span:first-child {
+    color:#EC0B0B;
+    margin-right:20px;
+}
+
+/* SearchBarValue.js */
+.search-condition {
+    width:150px !important;
+}
+.mail-search {
+    margin-right:15px;
+}
+
+/* MailTable.js */
+.receiver-li {
+    font-size:15px;
+    font-weight:bold;
+    padding:10px 15px;
+}
+.receiver-li span {
+    width:50%;
+    text-align: center;
+}
+.un-read-color {
+    color: #888;
+}
+
+.icon-record {
+    color:#EC0B0B;
+    position: relative;
+    top: -7px; /* 원하는 만큼 조정 */
+}
+
+.search-value {
+    width:70%;
+}
+
+/* MailForm.js */
+.receivers {
+    width:100px;
+}
+.receiver-box {
+    display: flex;
+}
+.receiver-box label {
+    width:100px;
+}
+.receiver-box>div {
+    width:calc(100% - 100px);
+    margin-bottom:15px;
+}
+.selected-recipient {
+    background-color: #efefef;
+    border-radius: 5px;
+    margin-right: 10px;
+    padding: 5px;
+    margin-bottom:10px;
+}
+
+
+.receiver-list {
+    display: inline-block;
+    max-width: 230px; /* 적절한 너비 설정 */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+  }
+  
+  .receiver-dropdown {
+    position: relative;
+  }
+  
+  .receiver-dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 180px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 10px;
+  }
+  
+  .receiver-dropdown:hover .receiver-dropdown-content {
+    display: block;
+  }

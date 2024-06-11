@@ -1,0 +1,32 @@
+실무에서 쓰이는 약어 종류
+ 
+✍️ AFAIK ( as far as I know )
+내가 알기에는, 내가 기억하는 한
+ 
+✍️ IMO ( in my opinion )
+내 생각에는, 개인적인 의견 입니다만.
+ 
+✍️ IMHO ( in my humble opinion )
+제 견해는... ( IMO 보다 조금 더 격식있음 )
+ 
+✍️ LGTM ( look good to me )
+내가 보기엔 괜찮아
+ 
+✍️ SGTM ( Sounds Good to Me )
+나에게는 좋다. PR(Pull Request)를 날리면 Reviewer가 LGTM 대신 SGTM으로 작성하는 경우도 있다.
+ 
+✍️ PTAL ( Please Take Another Look )
+제발 좀 봐주세요. 리뷰어가 리뷰를 해주다가 중간에 stop된 상태에서 리뷰좀 해달라고 부탁할때 쓰는것으로 보인다.
+ 
+✍️ FYI ( For Your Information )
+참고로
+ 
+✍️ ASAP ( as soon as possible )
+가능한 빨리, 최대한 빠르게 
+ 
+✍️ IOW ( In Other Words )
+다른 표현으로, 다시 말하면, 바꾸어 말하면
+ 
+✍️ TL;DR ( Too Long. Didn't Read )
+보통 문장 앞 부분에 긴 글을 요약할 때 쓰인다.
+출처: https://inpa.tistory.com/entry/IT-👩‍💻-코드-리뷰-태그-LGTM-이란 [Inpa Dev 👨‍💻:티스토리]
