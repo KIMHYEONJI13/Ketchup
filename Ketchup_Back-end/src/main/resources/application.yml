@@ -2,9 +2,9 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://squirrel.ohgiraffers.com:3360/ketchup
-    username: hikdt2312
-    password: hikdt2312
+    url: jdbc:mysql://localhost:3306/ketchup
+    username: devsplan
+    password: devsplan
   servlet:
     multipart:
       enabled: true
@@ -16,8 +16,8 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username: mail4ketchup@gmail.com
-    password: bnbybbuhvqdqkykb
+    username: davithjk1310@gmail.com
+    password: google49428768*
     properties:
       mail:
         smtp:
