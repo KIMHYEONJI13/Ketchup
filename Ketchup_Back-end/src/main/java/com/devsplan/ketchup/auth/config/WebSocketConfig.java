@@ -1,6 +1,7 @@
 package com.devsplan.ketchup.auth.config;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.socket.WebSocketHandler;
 import org.springframework.web.socket.config.annotation.EnableWebSocket;
@@ -9,12 +10,17 @@ import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry
 
 @Configuration
 @EnableWebSocket
-@RequiredArgsConstructor
 public class WebSocketConfig implements WebSocketConfigurer {
+
     private final WebSocketHandler webSocketHandler;
+
+    @Autowired
+    public WebSocketConfig(WebSocketHandler webSocketHandler) {
+        this.webSocketHandler = webSocketHandler;
+    }
 
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-        registry.addHandler(webSocketHandler, "/myHandler");
+        registry.addHandler(webSocketHandler, "/myHandler").setAllowedOrigins("*");
     }
 }

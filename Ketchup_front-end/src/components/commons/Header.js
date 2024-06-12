@@ -25,10 +25,10 @@ function Header() {
         navigate("login", { replace: true })
     };
 
-    // WebSocket 연결 설정
     useEffect(() => {
+        let socket = null;
         if (token) {
-            const socket = new WebSocket('ws://localhost:8080/myHandler');
+            socket = new WebSocket('ws://localhost:8080/myHandler');
 
             socket.addEventListener('open', () => {
                 console.log('WebSocket이 연결되었습니다.');
@@ -36,17 +36,21 @@ function Header() {
 
             socket.addEventListener('message', (event) => {
                 const message = JSON.parse(event.data);
-                setNotifications(prev => [...prev, message.content]);  // 알림을 상태에 추가
+                setNotifications(prev => [...prev, message.content]);
+                console.log('Received WebSocket message:', message); // 추가: 받은 메시지 로그
             });
 
-            socket.addEventListener('close', () => {
+            socket.addEventListener('close', (e) => {
                 console.log('WebSocket이 닫혔습니다.');
+                console.error(e);
             });
-
-            return () => {
-                socket.close();
-            };
         }
+
+        return () => {
+            if (socket) {
+                socket.close();
+            }
+        };
     }, [token]);
 
     return (

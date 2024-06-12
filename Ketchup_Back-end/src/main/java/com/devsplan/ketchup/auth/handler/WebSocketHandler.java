@@ -1,10 +1,14 @@
 package com.devsplan.ketchup.auth.handler;
 
 import com.devsplan.ketchup.auth.model.DetailsMember;
+import com.devsplan.ketchup.mail.dto.MailDTO;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.CloseStatus;
@@ -19,27 +23,21 @@ import java.util.concurrent.ConcurrentHashMap;
 
 @Component
 @RequiredArgsConstructor
+@Slf4j
 public class WebSocketHandler extends TextWebSocketHandler {
     private final Map<String, WebSocketSession> sessions = new ConcurrentHashMap<>();
     private final ObjectMapper objectMapper;
-    /**
-     * 웹 소켓 연결
-     */
+
     @Override
     public void afterConnectionEstablished(WebSocketSession session) {
         String principalId = getPrincipalId(session);
-        //유저의 id를 key값으로하여 session을 저장한다.
         sessions.put(principalId, session);
+        log.info("WebSocket connection established: sessionId={}, principalId={}", session.getId(), principalId);
     }
 
-    /**
-     * 양방향 데이터 통신
-     */
     @Override
     protected void handleTextMessage(WebSocketSession session, TextMessage message) throws JsonProcessingException, JsonProcessingException {
         JsonNode jsonNode = objectMapper.readValue(message.getPayload(), JsonNode.class);
-        //현재 session의 principal은 sender에 해당한다.
-        //message에는 receiver의 id가 포함되어야하며 이를 통해 receiver의 session을 찾아 메시지를 전송한다.
         Optional.of(sessions.get(jsonNode.get("receiverId").textValue()))
                 .filter(WebSocketSession::isOpen)
                 .ifPresent(s -> {
@@ -49,28 +47,38 @@ public class WebSocketHandler extends TextWebSocketHandler {
                         throw new RuntimeException(e);
                     }
                 });
+        log.info("Received WebSocket message: sessionId={}, message={}", session.getId(), message.getPayload());
     }
 
-    /**
-     * 소켓 통신 에러
-     */
-    @Override
-    public void handleTransportError(WebSocketSession session, Throwable exception) throws Exception {
-        super.handleTransportError(session, exception);
-    }
-
-    /**
-     * 소켓 연결 종료
-     */
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status) {
-        sessions.remove(getPrincipalId(session));
+        String principalId = getPrincipalId(session);
+        sessions.remove(principalId);
+        log.info("WebSocket connection closed: sessionId={}, principalId={}, closeStatus={}", session.getId(), principalId, status);
     }
 
     private String getPrincipalId(WebSocketSession session) {
-        //session으로부터 principal을 가져와 현재 인증된 유저의 id를 얻는다. 없다면 예외가 발생한다.
         return Optional.ofNullable((Authentication) session.getPrincipal())
                 .map(a -> String.valueOf(((DetailsMember) a.getPrincipal()).getMember().getMemberNo()))
                 .orElseThrow(() -> new RuntimeException("current not signin"));
     }
+
+    @Override
+    public void handleTransportError(WebSocketSession session, Throwable exception) throws Exception {
+        log.error("WebSocket transport error occurred: sessionId={}, error={}", session.getId(), exception.getMessage());
+    }
+
+    // 메일 알림 전송
+   /* public void sendMailNotification(MailDTO mailDto) throws IOException {
+        TextMessage message = new TextMessage(objectMapper.writeValueAsString(mailDto));
+
+        // 수신자의 WebSocket 세션을 찾아 알림을 전송
+        for (Map.Entry<String, WebSocketSession> entry : sessions.entrySet()) {
+            WebSocketSession session = entry.getValue();
+            if (session.isOpen()) {
+                session.sendMessage(message);
+            }
+        }
+    }*/
+
 }
