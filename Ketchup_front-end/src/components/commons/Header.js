@@ -6,11 +6,15 @@ import '../../pages/mails/mail.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { callLogoutAPI } from '../../apis/MemberAPICalls';
 import { decodeJwt } from '../../utils/tokenUtils';
+import NotificationIcon from '../../pages/NotificationIcon';
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 function Header() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const token = decodeJwt(window.localStorage.getItem('accessToken'));
+    const [notifications, setNotifications] = useState([]); // 알림기능을 위해 신규 생성
 
     const onClickLogoutHandler = () => {
         window.localStorage.removeItem('accessToken');
@@ -21,6 +25,30 @@ function Header() {
         navigate("login", { replace: true })
     };
 
+    // WebSocket 연결 설정
+    useEffect(() => {
+        if (token) {
+            const socket = new WebSocket('ws://localhost:8080/myHandler');
+
+            socket.addEventListener('open', () => {
+                console.log('WebSocket이 연결되었습니다.');
+            });
+
+            socket.addEventListener('message', (event) => {
+                const message = JSON.parse(event.data);
+                setNotifications(prev => [...prev, message.content]);  // 알림을 상태에 추가
+            });
+
+            socket.addEventListener('close', () => {
+                console.log('WebSocket이 닫혔습니다.');
+            });
+
+            return () => {
+                socket.close();
+            };
+        }
+    }, [token]);
+
     return (
         <header id="header" className="header fixed-top d-flex align-items-center">
 
@@ -29,17 +57,21 @@ function Header() {
                     <img style={{ width: '180px', height: '150px' }} src="/img/logo.png" alt="Logo" />
                 </Link>
             </div>
-         
+
             <Nav className="header-nav ms-auto">
                 <ul className="d-flex align-items-center">
+                    {/* 알림을 위해 신규 생성됨 */}
+                    <li className="nav-item d-flex">    
+                        <NotificationIcon notifications={notifications} />
+                    </li>
                     <li className="nav-item d-flex">
                         <Link to="/mails/receive" className="bi-envelope nav-icon m-0" style={{ color: '#EC0B0B' }}></Link>
                     </li>
                     <li className="nav-item dropdown pe-2">
                         <a className="nav-link nav-profile d-flex align-items-center pe-6" href="#" data-bs-toggle="dropdown">
 
-                            <img src={`/img/${token?.imgUrl}`} width="45" height="45"  alt="Profile" className="rounded-circle" />
-                            
+                            <img src={`/img/${token?.imgUrl}`} width="45" height="45" alt="Profile" className="rounded-circle" />
+
                             <span className="d-none d-md-block dropdown-toggle ps-2" style={{ color: "#000" }}>{token?.memberName} {token?.positionName}</span>
                         </a>
                         <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
