@@ -30,24 +30,33 @@ public class WebSocketHandler extends TextWebSocketHandler {
 
     @Override
     public void afterConnectionEstablished(WebSocketSession session) {
-        String principalId = getPrincipalId(session);
-        sessions.put(principalId, session);
-        log.info("WebSocket connection established: sessionId={}, principalId={}", session.getId(), principalId);
+        log.info("WebSocket connection established: sessionId={}", session.getId());
+        try {
+            String principalId = getPrincipalId(session);
+            sessions.put(principalId, session);
+            log.info("WebSocket connection established: sessionId={}, principalId={}", session.getId(), principalId);
+        } catch (Exception e) {
+            log.error("Error in afterConnectionEstablished: ", e);
+        }
     }
 
     @Override
     protected void handleTextMessage(WebSocketSession session, TextMessage message) throws JsonProcessingException, JsonProcessingException {
-        JsonNode jsonNode = objectMapper.readValue(message.getPayload(), JsonNode.class);
-        Optional.of(sessions.get(jsonNode.get("receiverId").textValue()))
-                .filter(WebSocketSession::isOpen)
-                .ifPresent(s -> {
-                    try {
-                        s.sendMessage(message);
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-                });
         log.info("Received WebSocket message: sessionId={}, message={}", session.getId(), message.getPayload());
+        try {
+            JsonNode jsonNode = objectMapper.readValue(message.getPayload(), JsonNode.class);
+            Optional.ofNullable(sessions.get(jsonNode.get("memberNo").textValue()))
+                    .filter(WebSocketSession::isOpen)
+                    .ifPresent(s -> {
+                        try {
+                            s.sendMessage(message);
+                        } catch (IOException e) {
+                            log.error("Error sending message: ", e);
+                        }
+                    });
+        } catch (IOException e) {
+            log.error("Error handling text message: ", e);
+        }
     }
 
     @Override
@@ -58,6 +67,10 @@ public class WebSocketHandler extends TextWebSocketHandler {
     }
 
     private String getPrincipalId(WebSocketSession session) {
+
+        System.out.println("getPrincipalId ================================================");
+        System.out.println("session principal : " + session.getPrincipal());
+
         return Optional.ofNullable((Authentication) session.getPrincipal())
                 .map(a -> String.valueOf(((DetailsMember) a.getPrincipal()).getMember().getMemberNo()))
                 .orElseThrow(() -> new RuntimeException("current not signin"));
