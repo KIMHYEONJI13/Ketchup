@@ -14,7 +14,7 @@ public class ResponseDTO {
     private int status;         // 상태코드값(200,404,415, 400, 500)
     private String message;     // 응답메세지
     private Object data;        // 응답데이터
-//    private Map<String, Object> results;
+
     public ResponseDTO() {
     }
 

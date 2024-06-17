@@ -40,15 +40,6 @@ public class FileUtils {
     }
 
 
-    /* 파일 삭제 메서드 */
-    public boolean deleteFile(String filePath) {
-        File fileToDelete = new File(filePath);
-        if (fileToDelete.exists()) {
-            return fileToDelete.delete();
-        } else {
-            return false;
-        }
-    }
 
     public static boolean deleteFile(String uploadDir, String fileName) {
 

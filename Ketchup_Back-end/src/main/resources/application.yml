@@ -17,7 +17,7 @@ spring:
     host: smtp.gmail.com
     port: 587
     username: davithjk1310@gmail.com
-    password: google49428768*
+    password: google49428768!
     properties:
       mail:
         smtp:
@@ -52,9 +52,6 @@ image:
 jwt:
   key: asdkfjlkawdsjfw390r82309rjlkasdfja213498dlk
   time: 86400000
-
-server:
-  port: 8080
 
 # db connection info & fileupload config
 #spring:

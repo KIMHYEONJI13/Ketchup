@@ -230,7 +230,6 @@ public class CommentService {
 
             commentRepository.save(comment);
 
-            schedulePermanentDeletion(commentNo);
         } catch (IllegalArgumentException e) {
             log.error("댓글 삭제 실패: {}", e.getMessage(), e);
             throw e;
@@ -239,35 +238,4 @@ public class CommentService {
             throw new RuntimeException("댓글 삭제 중 오류가 발생했습니다.", e);
         }
     }
-
-    @Transactional
-    public void schedulePermanentDeletion(int commentNo) {
-        System.out.println("schedulePermanentDeletion [ commentNo ] : " + commentNo);
-
-        taskScheduler.schedule(() -> {
-            deleteCommentFromDatabase(commentNo);
-        }, Instant.now().plusSeconds(10));
-    }
-
-    /* 실제 데이터베이스에서 댓글 삭제 */
-    @Transactional
-    public void deleteCommentFromDatabase(int commentNo) {
-        System.out.println("deleteCommentFromDatabase [ commentNo ] : " + commentNo);
-
-        try {
-            Comment comment = commentRepository.findById(commentNo).orElse(null);
-            if (comment == null) {
-                log.warn("해당하는 댓글이 없습니다.");
-                return;
-            }
-
-            if (comment.getDeleteComment()) {
-                commentRepository.delete(comment);
-            }
-        } catch (Exception e) {
-            log.error("데이터베이스에서 댓글 삭제 중 오류 발생: {}", e.getMessage(), e);
-            throw new RuntimeException("데이터베이스에서 댓글 삭제 중 오류 발생", e);
-        }
-    }
-
 }
