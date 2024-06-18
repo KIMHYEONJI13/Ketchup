@@ -26,32 +26,63 @@ function Header() {
     };
 
     useEffect(() => {
-        let socket = null;
-        if (token) {
-            socket = new WebSocket('ws://localhost:8080/myHandler');
-
-            socket.addEventListener('open', () => {
-                console.log('WebSocket이 연결되었습니다.');
-            });
-
-            socket.addEventListener('message', (event) => {
-                const message = JSON.parse(event.data);
-                setNotifications(prev => [...prev, message.content]);
-                console.log('Received WebSocket message:', message); // 추가: 받은 메시지 로그
-            });
-
-            socket.addEventListener('close', (e) => {
-                console.log('WebSocket이 닫혔습니다.');
-                console.error(e);
-            });
-        }
-
-        return () => {
-            if (socket) {
-                socket.close();
-            }
+        const ws = new WebSocket('ws://localhost:8080/myHandler');
+        
+        ws.onopen = () => {
+            console.log('WebSocket connection opened');
         };
-    }, [token]);
+
+        ws.onerror = (event) => {
+            console.error('WebSocket 오류:', event);
+        }; 
+        
+        ws.onclose = () => {
+            console.log('WebSocket connection closed');
+        };
+        
+        ws.onmessage = (event) => {
+            const newNotification = event.data;
+            setNotifications((prevNotifications) => [...prevNotifications, newNotification]);
+        };
+
+        // return () => {
+        //     ws.close();
+        // };
+
+        ws.onopen = () => {
+            console.log("WebSocket connection established");
+            ws.send("Test message from client");
+        };
+
+    }, []);
+
+    // useEffect(() => {
+    //     let socket = null;
+    //     if (token) {
+    //         socket = new WebSocket('ws://localhost:8080/myHandler');
+
+    //         socket.addEventListener('open', () => {
+    //             console.log('WebSocket이 연결되었습니다.');
+    //         });
+
+    //         socket.addEventListener('message', (event) => {
+    //             const message = JSON.parse(event.data);
+    //             setNotifications(prev => [...prev, message.content]);
+    //             console.log('Received WebSocket message:', message); // 추가: 받은 메시지 로그
+    //         });
+
+    //         socket.addEventListener('close', (e) => {
+    //             console.log('WebSocket이 닫혔습니다.');
+    //             console.error(e);
+    //         });
+    //     }
+
+    //     return () => {
+    //         if (socket) {
+    //             socket.close();
+    //         }
+    //     };
+    // }, [token]);
 
     return (
         <header id="header" className="header fixed-top d-flex align-items-center">
