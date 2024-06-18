@@ -53,6 +53,9 @@ jwt:
   key: asdkfjlkawdsjfw390r82309rjlkasdfja213498dlk
   time: 86400000
 
+server:
+    port: 8080
+
 # db connection info & fileupload config
 #spring:
 #  datasource:

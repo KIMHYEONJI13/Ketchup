@@ -53,10 +53,6 @@ public class WebSecurityConfig {
                 .addFilterBefore(customAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class) //로그인 성공과 실패후 핸들러 등록
                 .httpBasic(basic -> basic.disable()); // 기본인증에대한 인증철자 x //우리가 지정해주는걸로 진행해
 
-//        http.authorizeHttpRequests(auth ->{
-//            auth.requestMatchers("/Email/**","/verifyEmail/**").permitAll();
-//        });
-
         return http.build();
     }
 

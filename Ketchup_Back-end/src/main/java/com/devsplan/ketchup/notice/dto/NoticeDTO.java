@@ -22,7 +22,6 @@ public class NoticeDTO {
     private String noticeContent;                // 공지 내용
     private Timestamp noticeCreateDttm;          // 공지 등록일시
     private Timestamp noticeUpdateDttm;          // 공지 수정일시
-//    private String noticeImgUrl;               // 공지 파일 경로
     private List<NoticeFileDTO> noticeFileList;  // 공지 파일
 
     public NoticeDTO(int noticeNo, String memberNo, char noticeFix, String noticeTitle, String noticeContent, Timestamp noticeCreateDttm, List<NoticeFileDTO> noticeFileList) {

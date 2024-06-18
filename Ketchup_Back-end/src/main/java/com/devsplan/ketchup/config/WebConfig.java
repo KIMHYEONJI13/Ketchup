@@ -73,6 +73,5 @@ public class WebConfig implements WebMvcConfigurer {
                 .allowedOrigins("*") // 모든 도메인에서의 요청 허용
                 .allowedMethods("GET", "POST", "PUT", "DELETE") // 허용할 메소드
                 .allowedHeaders("*"); // 허용할 헤더
-//                .allowCredentials(true);
     }
 }

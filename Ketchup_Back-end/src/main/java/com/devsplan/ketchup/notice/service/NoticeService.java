@@ -1,5 +1,6 @@
 package com.devsplan.ketchup.notice.service;
 
+import com.devsplan.ketchup.auth.handler.WebSocketHandler;
 import com.devsplan.ketchup.board.dto.BoardDTO;
 import com.devsplan.ketchup.board.entity.Board;
 import com.devsplan.ketchup.common.Criteria;
@@ -34,6 +35,8 @@ public class NoticeService {
 
     private final NoticeRepository noticeRepository;
     private final NoticeFileRepository noticeFileRepository;
+
+    private final WebSocketHandler webSocketHandler;
     private final ModelMapper modelMapper;
 
     /* 이미지 저장 할 위치 및 응답 할 이미지 주소 */
@@ -43,9 +46,10 @@ public class NoticeService {
     @Value("${image.image-url}")
     private String IMAGE_URL;
 
-    public NoticeService(NoticeRepository noticeRepository, NoticeFileRepository noticeFileRepository, ModelMapper modelMapper) {
+    public NoticeService(NoticeRepository noticeRepository, NoticeFileRepository noticeFileRepository, WebSocketHandler webSocketHandler, ModelMapper modelMapper) {
         this.noticeRepository = noticeRepository;
         this.noticeFileRepository = noticeFileRepository;
+        this.webSocketHandler = webSocketHandler;
         this.modelMapper = modelMapper;
     }
 
@@ -160,6 +164,7 @@ public class NoticeService {
             Notice savedNotice = noticeRepository.save(notice);
 
             log.info("공지 등록 성공");
+            webSocketHandler.sendNotice("공지 등록 성공 : " + noticeDTO.getNoticeTitle());
             System.out.println("savedNotice : " + savedNotice.getNoticeNo());
             return savedNotice.getNoticeNo(); // 등록된 공지의 번호 반환
         } catch (Exception e) {
@@ -185,6 +190,7 @@ public class NoticeService {
             uploadFiles(savedNotice, files);
 
             log.info("공지 등록 성공");
+            webSocketHandler.sendNotice("공지 등록 성공 : " + noticeDTO.getNoticeTitle());
             System.out.println("savedNotice : " + savedNotice.getNoticeNo());
             return savedNotice.getNoticeNo(); // 등록된 공지의 번호 반환
         } catch (Exception e) {
