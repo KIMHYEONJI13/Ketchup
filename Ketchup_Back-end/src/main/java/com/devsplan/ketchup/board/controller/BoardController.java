@@ -43,24 +43,19 @@ public class BoardController {
             Integer roleDepNo = decryptToken(token).get("depNo", Integer.class);
             log.debug("Received request: roleDepNo={}, depNo={}, title={}, page={}", roleDepNo, depNo, title, offset);
 
-            // Check if the user role is LV3
             String role = decryptToken(token).get("role", String.class);
             if (role.equals("LV3")) {
-                // If LV3, retrieve posts for all departments
                 Page<BoardDTO> boardList = boardService.selectAllBoards(depNo, cri, title);
                 pagingResponseDTO.setData(boardList);
                 pagingResponseDTO.setPageInfo(new PageDTO(cri, (int) boardList.getTotalElements()));
                 return ResponseEntity.ok().body(new ResponseDTO(HttpStatus.OK, "Post list retrieval successful", pagingResponseDTO));
             } else {
-                // Otherwise, check if the department number matches the user's department
                 if (Objects.equals(roleDepNo, depNo)) {
-                    // If the user's department matches the requested department, retrieve posts for that department
                     Page<BoardDTO> boardList = boardService.selectBoardList(depNo, cri, title);
                     pagingResponseDTO.setData(boardList);
                     pagingResponseDTO.setPageInfo(new PageDTO(cri, (int) boardList.getTotalElements()));
                     return ResponseEntity.ok().body(new ResponseDTO(HttpStatus.OK, "Post list retrieval successful", pagingResponseDTO));
                 } else {
-                    // If the user's department doesn't match the requested department, return a forbidden response
                     return ResponseEntity.status(HttpStatus.FORBIDDEN).body(new ResponseDTO(HttpStatus.FORBIDDEN, "Permission denied", null));
                 }
             }
