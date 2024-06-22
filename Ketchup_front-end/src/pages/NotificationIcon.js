@@ -7,7 +7,7 @@ const NotificationIcon = ({ notifications }) => {
   const handleIconClick = () => {
     setShowNotifications(!showNotifications);
     console.log('Notification icon clicked. Show notifications:', !showNotifications); // 추가: 아이콘 클릭 로그
-};
+  };
 
   return (
     <div style={{ position: 'relative' }}>
