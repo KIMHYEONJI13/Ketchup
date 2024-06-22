@@ -51,10 +51,27 @@ public class WebSecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .formLogin(form -> form.disable())  //기본로그인창 x // 우리가 만든 로그인창 써!
                 .addFilterBefore(customAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class) //로그인 성공과 실패후 핸들러 등록
-                .httpBasic(basic -> basic.disable()); // 기본인증에대한 인증철자 x //우리가 지정해주는걸로 진행해
+                .httpBasic(basic -> basic.disable()) // 기본인증에대한 인증철자 x //우리가 지정해주는걸로 진행해
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/ws/**").permitAll()
+                        .anyRequest().authenticated());
 
         return http.build();
     }
+
+//    @Bean
+//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+//        http
+//                .cors().and() // Enable CORS
+//                .csrf().disable() // Disable CSRF
+//                .authorizeRequests()
+//                .anyRequest().permitAll() // Permit all requests
+//                .and()
+//                .headers()
+//                .frameOptions().sameOrigin(); // Allow frames from same origin
+//
+//        return http.build();
+//    }
 
     /**
      * description. 사용자 요청(request) 시 수행되는 메소드

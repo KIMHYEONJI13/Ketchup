@@ -142,7 +142,7 @@ public class TokenUtils {
         claims.put("depName", member.getDepartment().getDepName());
         claims.put("imgUrl", member.getImgUrl());
         claims.put("isFirstLogin", member.getIsFirstLogin());
-
+//        claims.put("user_id", member.getMemberNo()); // 추가한 필드
 
         return claims;
     }

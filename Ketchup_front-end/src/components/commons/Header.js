@@ -26,7 +26,7 @@ function Header() {
     };
 
     useEffect(() => {
-        const ws = new WebSocket('ws://localhost:8080/myHandler');
+        const ws = new WebSocket('ws://localhost:8080/ws/myHandler');
         
         ws.onopen = () => {
             console.log('WebSocket connection opened');
@@ -45,44 +45,12 @@ function Header() {
             setNotifications((prevNotifications) => [...prevNotifications, newNotification]);
         };
 
-        // return () => {
-        //     ws.close();
-        // };
-
         ws.onopen = () => {
             console.log("WebSocket connection established");
             ws.send("Test message from client");
         };
 
     }, []);
-
-    // useEffect(() => {
-    //     let socket = null;
-    //     if (token) {
-    //         socket = new WebSocket('ws://localhost:8080/myHandler');
-
-    //         socket.addEventListener('open', () => {
-    //             console.log('WebSocket이 연결되었습니다.');
-    //         });
-
-    //         socket.addEventListener('message', (event) => {
-    //             const message = JSON.parse(event.data);
-    //             setNotifications(prev => [...prev, message.content]);
-    //             console.log('Received WebSocket message:', message); // 추가: 받은 메시지 로그
-    //         });
-
-    //         socket.addEventListener('close', (e) => {
-    //             console.log('WebSocket이 닫혔습니다.');
-    //             console.error(e);
-    //         });
-    //     }
-
-    //     return () => {
-    //         if (socket) {
-    //             socket.close();
-    //         }
-    //     };
-    // }, [token]);
 
     return (
         <header id="header" className="header fixed-top d-flex align-items-center">

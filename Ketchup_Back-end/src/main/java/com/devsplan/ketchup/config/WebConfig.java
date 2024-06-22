@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -24,6 +25,7 @@ import java.util.List;
 
 @Configuration
 @EnableWebMvc
+@EnableWebSecurity
 public class WebConfig implements WebMvcConfigurer {
 
     // 정적 자원에 접근을 허용하게 하기 위함
@@ -70,8 +72,10 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("*") // 모든 도메인에서의 요청 허용
+                .allowedOrigins("http://localhost:3000") // 모든 도메인에서의 요청 허용
                 .allowedMethods("GET", "POST", "PUT", "DELETE") // 허용할 메소드
-                .allowedHeaders("*"); // 허용할 헤더
+                .allowedHeaders("*") // 허용할 헤더
+                .exposedHeaders("Authorization", "Content-Disposition") // 노출할 헤더
+                .allowCredentials(true);
     }
 }
