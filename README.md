@@ -1,6 +1,8 @@
 # Ketchup
 Spring Data JPA와 React를 이용한 그룹웨어 프로그램 
 
+[devs plan 공용레포](https://github.com/devs-plan)
+
 ## Introduce
 그룹웨어 프로그램
 
