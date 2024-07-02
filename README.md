@@ -2,6 +2,8 @@
 Spring Data JPA와 React를 이용한 그룹웨어 프로그램 
 
 [devs plan 공용레포](https://github.com/devs-plan)
+<br>
+[Canva PPT](https://www.canva.com/design/DAGHvR-E1Xo/OBgyL_3Yj1EB-1zV_rRdww/edit)
 
 ## Introduce
 그룹웨어 프로그램
