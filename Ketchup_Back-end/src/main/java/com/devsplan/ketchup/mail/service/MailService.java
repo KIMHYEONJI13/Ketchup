@@ -1,5 +1,6 @@
 package com.devsplan.ketchup.mail.service;
 
+import com.devsplan.ketchup.auth.handler.WebSocketHandler;
 import com.devsplan.ketchup.common.Criteria;
 import com.devsplan.ketchup.mail.dto.MailDTO;
 import com.devsplan.ketchup.mail.dto.MailFileDTO;
@@ -28,11 +29,14 @@ public class MailService {
     private final MailRepository mailRepository;
     private final ReceiverRepository receiverRepository;
     private final MailFileRepository mailFileRepository;
+    private final WebSocketHandler mailWebSocketHandler;
 
-    public MailService(MailRepository mailRepository, ReceiverRepository receiverRepository, MailFileRepository mailFileRepository) {
+
+    public MailService(MailRepository mailRepository, ReceiverRepository receiverRepository, MailFileRepository mailFileRepository, WebSocketHandler mailWebSocketHandler) {
         this.mailRepository = mailRepository;
         this.receiverRepository = receiverRepository;
         this.mailFileRepository = mailFileRepository;
+        this.mailWebSocketHandler = mailWebSocketHandler;
     }
 
     @Value("${image.image-dir}")
@@ -87,6 +91,9 @@ public class MailService {
 
             result = sendMailNo;
         }
+
+        // 메일 전송 시 알림 전송
+//        mailWebSocketHandler.sendMailNotification(mailInfo);
 
         return result;
     }
